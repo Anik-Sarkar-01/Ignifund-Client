@@ -5,7 +5,7 @@ const Navbar = () => {
     const navItems = <>
         <li><NavLink>Home</NavLink></li>
         <li><NavLink>All Campaign</NavLink></li>
-        <li><NavLink>Add New Campaign</NavLink></li>
+        <li><NavLink to='/addCampaigns'>Add New Campaign</NavLink></li>
         <li><NavLink>My Campaign</NavLink></li>
         <li><NavLink>My Donations</NavLink></li>
     </>
@@ -24,8 +24,8 @@ const Navbar = () => {
                 </div>
                 <a className="btn btn-ghost text-xl">IgniFund</a>
             </div>
-            <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+            <div className="navbar-center pr-[600px] hidden lg:flex">
+                <ul className="menu gap-3 menu-horizontal px-1">
                     {navItems}
                 </ul>
             </div>
