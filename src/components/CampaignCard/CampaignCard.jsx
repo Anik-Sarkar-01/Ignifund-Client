@@ -1,22 +1,27 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const CampaignCard = () => {
+const CampaignCard = ({ campaign }) => {
+    const {_id, image, title, type, description, deadline, amount } = campaign;
     return (
         <div className="card bg-base-100 w-96 shadow-sm">
             <figure>
                 <img
-                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                    alt="Shoes" />
+                    src={image}
+                    alt="photo of ${title}" />
             </figure>
             <div className="card-body">
                 <h2 className="card-title">
-                    Card Title
-                    <div className="badge badge-secondary">NEW</div>
+                    {title}
+                    <div className="text-sm bg-secondary p-1 text-center rounded-sm">{deadline}</div>
                 </h2>
-                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-                <div className="card-actions justify-end">
-                    <div className="badge badge-outline">Fashion</div>
-                    <div className="badge badge-outline">Products</div>
+                <p className='line-clamp-2'>{description}</p>
+                <div className="card-actions ">
+                    <div className="badge badge-outline">$ {amount}</div>
+                    <div className="badge badge-outline">{type}</div>
+                </div>
+                <div>
+                    <Link to={`campaign/${_id}`} className='btn'>See More</Link>
                 </div>
             </div>
         </div>
