@@ -3,6 +3,7 @@ import MainLayout from "../layout/MainLayout";
 import Home from "../pages/Home/Home";
 import AddCampaigns from "../pages/AddCampaigns/AddCampaigns";
 import CampaignDetails from "../pages/CampaignDetails/CampaignDetails";
+import AllCampaigns from "../pages/AllCampaigns/AllCampaigns";
 
 const router = createBrowserRouter([
     {
@@ -20,8 +21,13 @@ const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/campaign/${params.id}`)
             },
             {
+                path: "/allCampaigns",
+                element: <AllCampaigns></AllCampaigns>,
+                loader: () => fetch('http://localhost:5000/campaigns')
+            },
+            {
                 path: "/addCampaigns",
-                element: <AddCampaigns></AddCampaigns>
+                element: <AddCampaigns></AddCampaigns>,
             }
         ]
     },

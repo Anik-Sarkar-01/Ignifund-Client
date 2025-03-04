@@ -4,7 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 const Navbar = () => {
     const navItems = <>
         <li><NavLink>Home</NavLink></li>
-        <li><NavLink>All Campaign</NavLink></li>
+        <li><NavLink to='/allCampaigns'>All Campaign</NavLink></li>
         <li><NavLink to='/addCampaigns'>Add New Campaign</NavLink></li>
         <li><NavLink>My Campaign</NavLink></li>
         <li><NavLink>My Donations</NavLink></li>
