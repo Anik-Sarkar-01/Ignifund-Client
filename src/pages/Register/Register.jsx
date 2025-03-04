@@ -1,17 +1,34 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../provider/AuthProvider';
 
 const Register = () => {
+    const [error, setError] = useState("");
+    const { createUser } = useContext(AuthContext);
 
     const handleRegister = e => {
         e.preventDefault();
         const form = e.target;
-        const name = form.name.value;
+        // const name = form.name.value;
         const email = form.email.value;
-        const photo = form.photoUrl.value;
+        // const photo = form.photoUrl.value;
         const password = form.password.value;
+        const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
 
-        console.log(name, email, photo, password);
+        if(!passwordPattern.test(password)){
+            setError("Password should contain minimum one Uppercase, One Lowercase and 6 Character.")
+            return;
+        }
+
+        createUser(email, password)
+        .then((result) => {
+            setError("");
+            const user = result.user;
+            console.log(user);
+        })
+        .catch((error) => {
+            setError(error.code)
+        })
     }
 
     return (
@@ -27,6 +44,7 @@ const Register = () => {
                         <input type="text" name='photoUrl' className="input" placeholder="photo URL" />
                         <label className="fieldset-label">Password</label>
                         <input type="password" name='password' className="input" placeholder="Password" />
+                        <p className='text-red-600'>{error}</p>
                         <button className="btn btn-neutral mt-4">Register</button>
                     </form>
                 </div>
