@@ -31,7 +31,7 @@ const Register = () => {
                     </form>
                 </div>
             </div>
-            <p className='text-center'>Already  have an Account? <Link to="/login" className='btn'>Login</Link></p>
+            <p className='text-center'>Already have an Account? <Link to="/login" className='btn'>Login</Link></p>
         </div>
     );
 };
