@@ -4,7 +4,7 @@ import { AuthContext } from '../../provider/AuthProvider';
 
 const Login = () => {
     const [error, setError] = useState("");
-    const {logIn} = useContext(AuthContext);
+    const {logIn, googleLogIn} = useContext(AuthContext);
 
     const handleLogin = e => {
         e.preventDefault();
@@ -23,6 +23,17 @@ const Login = () => {
         })
     }
 
+    const handleGoogleLogIn = () => {
+        googleLogIn()
+        .then((result) => {
+            setError("");
+            const user = result.user;
+            console.log(user);
+        })
+        .catch((error) => {
+            setError(error.code);
+        })
+    }
     
 
     return (
@@ -38,7 +49,7 @@ const Login = () => {
                         <p className='text-red-600'>{error}</p>
                         <button className="btn btn-neutral mt-4">Login</button>
                     </form>
-                    <button className='btn btn-primary'>Login With Google</button>
+                    <button onClick={handleGoogleLogIn} className='btn btn-primary'>Login With Google</button>
                 </div>
             </div>
             <p className='text-center'>Don't have an Account? <Link to="/register"className='btn'>Register</Link></p>
