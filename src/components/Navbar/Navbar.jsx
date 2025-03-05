@@ -45,7 +45,7 @@ const Navbar = () => {
                     user ?
                             <Link onClick={handleLogOut} className='btn'>Log Out</Link>
                         :
-                        <div>
+                        <div className='flex items-center gap-3'>
                             <Link to="/login" className="btn">LogIn</Link>
                             <Link to="/register" className="btn">Register</Link>
                         </div>

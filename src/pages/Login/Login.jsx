@@ -34,7 +34,7 @@ const Login = () => {
             setError("");
             const user = result.user;
             setUser(user);
-            console.log(user);
+            navigate(location?.state ? location.state : "/");
         })
         .catch((error) => {
             setError(error.code);

@@ -9,6 +9,7 @@ import Register from "../pages/Register/Register";
 import MyCampaigns from "../pages/MyCampaigns/MyCampaigns";
 import MyDonations from "../pages/MyDonations/MyDonations";
 import PrivateRoute from "./PrivateRoute";
+import UpdateCampaign from "../pages/UpdateCampaign/UpdateCampaign";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +34,32 @@ const router = createBrowserRouter([
                 loader: () => fetch('http://localhost:5000/campaigns')
             },
             {
+                path: "/addCampaigns",
+                element: <PrivateRoute>
+                    <AddCampaigns></AddCampaigns>
+                </PrivateRoute>
+            },
+            {
+                path: "/myCampaigns",
+                element: <PrivateRoute>
+                    <MyCampaigns></MyCampaigns>
+                </PrivateRoute>,
+                loader: () => fetch('http://localhost:5000/campaigns')
+            },
+            {
+                path: "/myDonations",
+                element: <PrivateRoute>
+                    <MyDonations></MyDonations>
+                </PrivateRoute>
+            },
+            {
+                path: "/updateCampaign/:id",
+                element: <PrivateRoute>
+                    <UpdateCampaign></UpdateCampaign>
+                </PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/campaign/${params.id}`)
+            },
+            {
                 path: "login",
                 element: <Login></Login>
             },
@@ -40,18 +67,6 @@ const router = createBrowserRouter([
                 path: "register",
                 element: <Register></Register>
             },
-            {
-                path: "/addCampaigns",
-                element: <AddCampaigns></AddCampaigns>,
-            },
-            {
-                path: "/myCampaigns",
-                element: <MyCampaigns></MyCampaigns>
-            },
-           {
-            path: "/myDonations",
-            element: <MyDonations></MyDonations>
-           }
         ]
     },
     {

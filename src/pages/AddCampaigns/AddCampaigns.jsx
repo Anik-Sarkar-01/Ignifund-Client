@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Swal from 'sweetalert2'
+import { AuthContext } from '../../provider/AuthProvider';
 
 const AddCampaigns = () => {
+    const {user} = useContext(AuthContext);
     const handleSubmit = e => {
         e.preventDefault();
         const form = e.target;
@@ -68,10 +70,14 @@ const AddCampaigns = () => {
                             <label className="fieldset-label">User Email</label>
                             <input type="email" 
                             name='email'
+                            value={user.email}
+                            readOnly
                             className="input" placeholder="Email" />
                             <label className="fieldset-label">Name</label>
                             <input type="text" 
                             name='name'
+                            value={user.displayName}
+                            readOnly
                             className="input" placeholder="User Name" />
                             <button className="btn btn-neutral mt-4">Add Campaign</button>
                         </form>
