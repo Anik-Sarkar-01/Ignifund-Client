@@ -1,35 +1,47 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 
 const Register = () => {
     const [error, setError] = useState("");
-    const { createUser, setUser } = useContext(AuthContext);
+    const { createUser, setUser, updateUserProfile } = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     const handleRegister = e => {
         e.preventDefault();
         const form = e.target;
-        // const name = form.name.value;
+        const name = form.name.value;
         const email = form.email.value;
-        // const photo = form.photoUrl.value;
+        const photo = form.photoUrl.value;
+
         const password = form.password.value;
         const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
 
-        if(!passwordPattern.test(password)){
+        if (!passwordPattern.test(password)) {
             setError("Password should contain minimum one Uppercase, One Lowercase and 6 Character.")
             return;
         }
 
         createUser(email, password)
-        .then((result) => {
-            setError("");
-            const user = result.user;
-            setUser(user);
-            console.log(user);
-        })
-        .catch((error) => {
-            setError(error.code)
-        })
+            .then((result) => {
+                setError("");
+                const user = result.user;
+                setUser(user);
+                updateUserProfile({ displayName: name, photoURL: photo })
+                    .then(() => {
+                        navigate("/");
+                        // toast success
+                    })
+                    .catch(() => {
+                        alert("Update unsuccessful");
+                        // toast error
+                    })
+            })
+            .catch((error) => {
+                setError(error.code)
+                // toast error
+            })
     }
 
     return (
