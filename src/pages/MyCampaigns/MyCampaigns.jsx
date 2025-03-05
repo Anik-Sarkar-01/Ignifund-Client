@@ -1,16 +1,23 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const MyCampaigns = () => {
     const { user } = useContext(AuthContext);
     const email = user.email;
 
-    const loadedCampaigns = useLoaderData();
-    const filteredCampaigns = loadedCampaigns.filter(campaign => campaign.email === email);
+    const [campaigns, setCampaigns] = useState([]);
 
-    const [campaigns, setCampaigns] = useState(filteredCampaigns);
+    useEffect(() => {
+        fetch(`http://localhost:5000/myCampaigns/${email}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            setCampaigns(data);
+        })
+    },[email])
+
 
     const handleDelete = id => {
         Swal.fire({
@@ -43,16 +50,6 @@ const MyCampaigns = () => {
         });
     
     }
-
-
-    // fetch(`http://localhost:5173/myCampaigns/${email}`, {
-    //     method: "GET",
-    // })
-    // .then((res) => res.json())
-    // .then((data) => {
-    //     console.log(data);
-    // })
-
 
 
     return (
