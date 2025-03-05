@@ -10,7 +10,7 @@ const CampaignCard = ({ campaign }) => {
                     src={image}
                     alt="photo of ${title}" />
             </figure>
-            <div className="card-body">
+            <div className="card-body space-y-2">
                 <h2 className="card-title">
                     {title}
                     <div className="text-sm bg-secondary p-1 text-center rounded-sm">{deadline}</div>

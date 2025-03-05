@@ -4,7 +4,7 @@ import { AuthContext } from '../../provider/AuthProvider';
 
 const Login = () => {
     const [error, setError] = useState("");
-    const {logIn, googleLogIn} = useContext(AuthContext);
+    const {logIn, googleLogIn, setUser} = useContext(AuthContext);
 
     const handleLogin = e => {
         e.preventDefault();
@@ -16,6 +16,7 @@ const Login = () => {
         .then((res) => {
             setError("");
             const user = res.user;
+            setUser(user);
             console.log(user);
         })
         .catch((error) => {
@@ -28,6 +29,7 @@ const Login = () => {
         .then((result) => {
             setError("");
             const user = result.user;
+            setUser(user);
             console.log(user);
         })
         .catch((error) => {

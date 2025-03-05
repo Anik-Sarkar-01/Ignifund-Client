@@ -6,6 +6,8 @@ import CampaignDetails from "../pages/CampaignDetails/CampaignDetails";
 import AllCampaigns from "../pages/AllCampaigns/AllCampaigns";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import MyCampaigns from "../pages/MyCampaigns/MyCampaigns";
+import MyDonations from "../pages/MyDonations/MyDonations";
 
 const router = createBrowserRouter([
     {
@@ -38,7 +40,15 @@ const router = createBrowserRouter([
             {
                 path: "/addCampaigns",
                 element: <AddCampaigns></AddCampaigns>,
-            }
+            },
+            {
+                path: "/myCampaigns",
+                element: <MyCampaigns></MyCampaigns>
+            },
+           {
+            path: "/myDonations",
+            element: <MyDonations></MyDonations>
+           }
         ]
     },
     {
