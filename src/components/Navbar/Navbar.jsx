@@ -7,9 +7,9 @@ const Navbar = () => {
 
     const handleLogOut = () => {
         logOut()
-        .then(() => {
-            setUser(null);
-        })
+            .then(() => {
+                setUser(null);
+            })
     }
 
     const navItems = <>
@@ -20,7 +20,7 @@ const Navbar = () => {
         <li><NavLink to="/myDonations">My Donations</NavLink></li>
     </>
     return (
-        <div className="navbar bg-base-100 shadow-sm">
+        <div className="navbar bg-[#F8B864] shadow-sm">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -35,15 +35,29 @@ const Navbar = () => {
                 <Link to="/" className="btn btn-ghost text-xl">IgniFund</Link>
             </div>
             <div className="navbar-center pr-[600px] hidden lg:flex">
-                <ul className="menu gap-3 menu-horizontal px-1">
+                <ul className="menu gap-3 menu-horizontal px-1 font-bold ">
                     {navItems}
                 </ul>
             </div>
             <div className="navbar-end">
-            
+
                 {
                     user ?
+                        <div className='flex items-center gap-3'>
+                            <div className="relative group w-12 h-12">
+                               
+                                <img
+                                    className="rounded-full w-full h-full object-cover"
+                                    src={user.photoURL}
+                                    alt=""
+                                />
+                                <div className="absolute inset-0 text-center rounded-lg bg-white  text-black text-xs flex items-center font-semibold
+                                opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    {user.displayName}
+                                </div>
+                            </div>
                             <Link onClick={handleLogOut} className='btn'>Log Out</Link>
+                        </div>
                         :
                         <div className='flex items-center gap-3'>
                             <Link to="/login" className="btn">LogIn</Link>

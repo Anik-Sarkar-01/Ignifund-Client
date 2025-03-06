@@ -7,7 +7,7 @@ const MainLayout = () => {
     return (
         <div className="font-space-grotesk">
             <header>
-                <nav>
+                <nav >
                     <Navbar></Navbar>
                 </nav>
             </header>
