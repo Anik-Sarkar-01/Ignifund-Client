@@ -2,12 +2,12 @@ import React from 'react';
 import { MdAdd, MdOutlineUpdate } from 'react-icons/md';
 import { RiCoinsLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
-import { Zoom } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 
 const CampaignCard = ({ campaign }) => {
     const { _id, image, title, type, description, deadline, amount } = campaign;
     return (
-        <Zoom>
+        <Fade>
             <div className=" bg-base-100 w-96 shadow-sm">
                 <figure className='relative'>
                     <img
@@ -32,7 +32,7 @@ const CampaignCard = ({ campaign }) => {
                     </div>
                 </div>
             </div>
-        </Zoom>
+        </Fade>
     );
 };
 
