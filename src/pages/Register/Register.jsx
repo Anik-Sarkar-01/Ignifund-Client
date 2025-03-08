@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
+import { AiOutlineLogin } from 'react-icons/ai';
 
 const Register = () => {
     const [error, setError] = useState("");
@@ -45,10 +46,10 @@ const Register = () => {
     }
 
     return (
-        <div className='pt-5 space-y-2'>
+        <div className='py-5 space-y-2'>
             <div className="bg-base-200 max-w-xl mx-auto ">
                 <div className="card-body">
-                    <form onSubmit={handleRegister} className="fieldset *:w-full">
+                    <form onSubmit={handleRegister} className="fieldset *:w-full *:text-[16px] *:font-bold">
                         <label className="fieldset-label">Name</label>
                         <input type="text" name='name' className="input" placeholder="Name" />
                         <label className="fieldset-label">Email</label>
@@ -58,11 +59,11 @@ const Register = () => {
                         <label className="fieldset-label">Password</label>
                         <input type="password" name='password' className="input" placeholder="Password" />
                         <p className='text-red-600'>{error}</p>
-                        <button className="btn btn-neutral mt-4">Register</button>
+                        <button className="btn bg-[#019DBF] mt-4 font-bold text-[16px] rounded-none">  <AiOutlineLogin /> Register</button>
                     </form>
                 </div>
             </div>
-            <p className='text-center'>Already have an Account? <Link to="/login" className='btn'>Login</Link></p>
+            <p className='text-center text-[16px] font-semibold'>Already have an Account? <Link to="/login" className='btn bg-[#019DBF] rounded-none text-[16px] font-semibold'> <AiOutlineLogin></AiOutlineLogin> Login</Link></p>
         </div>
     );
 };

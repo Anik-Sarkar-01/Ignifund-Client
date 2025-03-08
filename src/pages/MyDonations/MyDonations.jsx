@@ -14,10 +14,14 @@ const MyDonations = () => {
             })
     }, [user?.email])
     return (
-        <div className='grid grid-cols-3'>
-           {
-            donations.map(donation => <DonationCard key={donation._id} donation={donation}></DonationCard>)
-           }
+        <div className='px-5'>
+            <h1 className='text-3xl font-bold text-center py-10'>My <span className='text-[#019DBF]'>Donations - ({donations.length})</span></h1>
+            <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 place-items-center gap-10 max-w-7xl mx-auto pb-10'>
+
+                {
+                    donations.map(donation => <DonationCard key={donation._id} donation={donation}></DonationCard>)
+                }
+            </div>
         </div>
     );
 };

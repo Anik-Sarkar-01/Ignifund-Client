@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const MyCampaigns = () => {
@@ -11,12 +11,12 @@ const MyCampaigns = () => {
 
     useEffect(() => {
         fetch(`http://localhost:5000/myCampaigns/${email}`)
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            setCampaigns(data);
-        })
-    },[email])
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setCampaigns(data);
+            })
+    }, [email])
 
 
     const handleDelete = id => {
@@ -48,15 +48,15 @@ const MyCampaigns = () => {
                     })
             }
         });
-    
+
     }
 
 
     return (
-        <div>
-            <h2>This is my Campaigns page</h2>
+        <div className='border-2 border-[#019DBF] border-dotted p-5 max-w-7xl mx-auto my-10'>
+            <h2 className='text-3xl font-bold text-center'>My <span className='text-[#019DBF]'>Campaigns</span></h2>
             <div className="overflow-x-auto">
-                <table className="table">
+                <table className="table-xs lg:table-lg mx-auto">
                     <thead>
                         <tr>
                             <th>Serial</th>
@@ -94,13 +94,13 @@ const MyCampaigns = () => {
                                     <div className="text-sm opacity-50">{campaign.email}</div>
                                 </td>
                                 <td>
-                                    <div className="font-bold">Minimum Amount: ${campaign.amount}</div>
+                                    <div className="font-bold">Minimum Amount: $ {campaign.amount}</div>
                                     <div className="text-sm opacity-50">Deadline: {campaign.deadline}</div>
                                 </td>
-                                <th>
-                                    <Link to={`/campaign/${campaign._id}`} className="btn">See More</Link>
-                                    <Link to={`/updateCampaign/${campaign._id}`} className="btn">Update</Link>
-                                    <Link onClick={() => handleDelete(campaign._id)} className="btn">Delete</Link>
+                                <th className='flex items-center gap-2 *:bg-[#019DBF] *:rounded-none'>
+                                    <Link to={`/campaign/${campaign._id}`} className="btn ">See More</Link>
+                                    <Link to={`/updateCampaign/${campaign._id}`} className="btn ">Update</Link>
+                                    <Link onClick={() => handleDelete(campaign._id)} className="btn ">Delete</Link>
                                 </th>
                             </tr>)
                         }

@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 
 const UpdateCampaign = () => {
     const loadedCampaign = useLoaderData();
-    const {_id, image, title, type, description, amount, deadline, email, name} = loadedCampaign;
+    const { _id, image, title, type, description, amount, deadline, email, name } = loadedCampaign;
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -41,11 +41,12 @@ const UpdateCampaign = () => {
             })
     }
     return (
-        <div className="hero bg-base-200 min-h-screen">
-            <div className="bg-base-100 w-full shadow-2xl ">
-                <div className="card-body max-w-3xl mx-auto">
-                    <form onSubmit={handleSubmit} className="fieldset *:w-full">
-                        <label className="fieldset-label">Image</label>
+        <div className="hero min-h-screen px-10 py-5">
+            <div className="w-full">
+                <h2 className='text-3xl font-bold text-center'>Update Your Campaign</h2>
+                <div className="card-body max-w-3xl mx-auto  border-2 border-[#019DBF] border-dotted mt-5">
+                    <form onSubmit={handleSubmit} className="fieldset *:w-full *:text-black *:font-semibold">
+                        <label className="fieldset-label">Image URL</label>
                         <input type="text"
                             name='image'
                             defaultValue={image}
@@ -62,10 +63,7 @@ const UpdateCampaign = () => {
                             defaultValue={type}
                             className="input" placeholder="Campaign Type" />
                         <label className="fieldset-label">Description</label>
-                        <input type="text"
-                            name='description'
-                            defaultValue={description}
-                            className="input" placeholder="Description" />
+                        <textarea className="textarea" name='description' defaultValue={description} placeholder="Description"></textarea>
                         <label className="fieldset-label">Minimum Donation Amount</label>
                         <input type="number"
                             name='amount'
@@ -88,7 +86,7 @@ const UpdateCampaign = () => {
                             defaultValue={name}
                             readOnly
                             className="input" placeholder="User Name" />
-                        <button className="btn btn-neutral mt-4">Update Campaign</button>
+                        <button className="btn bg-[#019DBF] rounded-none mt-4 ">Update Campaign</button>
                     </form>
                 </div>
             </div>

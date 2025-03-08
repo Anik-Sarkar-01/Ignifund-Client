@@ -39,8 +39,9 @@ const Slider = () => {
         >
             {slides.map((slide) => (
                 <SwiperSlide
+                    
                     key={slide.id}
-                    style={{ width: "300px" }} 
+                    
                 >
                     <SliderItem slide={slide}></SliderItem>
                 </SwiperSlide>
