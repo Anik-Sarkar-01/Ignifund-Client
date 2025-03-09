@@ -15,23 +15,24 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout></MainLayout>,
+        errorElement: <h2 className="text-red-300">Error !!!!</h2>,
         children: [
             {
                 path: "/",
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/runningCampaigns')
+                loader: () => fetch('https://ignifund-server.vercel.app/runningCampaigns')
             },
             {
                 path: "/campaign/:id",
                 element: <PrivateRoute>
                     <CampaignDetails></CampaignDetails>
                 </PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/campaign/${params.id}`)
+                loader: ({ params }) => fetch(`https://ignifund-server.vercel.app/campaign/${params.id}`)
             },
             {
                 path: "/allCampaigns",
                 element: <AllCampaigns></AllCampaigns>,
-                loader: () => fetch('http://localhost:5000/allCampaigns')
+                loader: () => fetch('https://ignifund-server.vercel.app/allCampaigns')
             },
             {
                 path: "/addCampaigns",
@@ -56,7 +57,7 @@ const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <UpdateCampaign></UpdateCampaign>
                 </PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/campaign/${params.id}`)
+                loader: ({ params }) => fetch(`https://ignifund-server.vercel.app/campaign/${params.id}`)
             },
             {
                 path: "login",

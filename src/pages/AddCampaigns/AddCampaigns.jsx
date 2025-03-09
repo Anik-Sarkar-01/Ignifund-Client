@@ -18,7 +18,7 @@ const AddCampaigns = () => {
 
         const newCampaign = { image, title, type, description, amount, deadline, email, name };
 
-        fetch('http://localhost:5000/campaigns', {
+        fetch('https://ignifund-server.vercel.app/campaigns', {
             method: "POST",
             headers: {
                 "content-type": "application/json"

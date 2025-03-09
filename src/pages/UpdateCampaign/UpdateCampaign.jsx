@@ -20,7 +20,7 @@ const UpdateCampaign = () => {
 
         const updatedCampaign = { image, title, type, description, amount, deadline, email, name };
 
-        fetch(`http://localhost:5000/campaign/${_id}`, {
+        fetch(`https://ignifund-server.vercel.app/campaign/${_id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"
@@ -29,7 +29,6 @@ const UpdateCampaign = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.modifiedCount > 0) {
                     Swal.fire({
                         title: 'Good Job!',

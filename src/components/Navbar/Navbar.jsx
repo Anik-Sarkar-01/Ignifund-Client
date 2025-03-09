@@ -7,9 +7,7 @@ const Navbar = () => {
     const { user, setUser, logOut } = useContext(AuthContext);
     const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
     useEffect(() => {
-        // Store the theme in local storage
         localStorage.setItem("theme", theme);
-        // Update the data-theme attribute on the HTML element
         document.querySelector("html").setAttribute("data-theme", theme);
     }, [theme]);
 

@@ -1,9 +1,8 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay, EffectCoverflow } from 'swiper/modules';
+import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-import 'swiper/css/effect-coverflow';
+import 'swiper/css/effect-fade';
 import { useEffect, useState } from 'react';
 import SliderItem from '../SliderItem/SliderItem';
 
@@ -17,36 +16,26 @@ const Slider = () => {
     }, []);
 
     return (
-        <Swiper
-            modules={[Pagination, Autoplay, EffectCoverflow]} 
-            effect="coverflow" 
-            spaceBetween={30} 
-            slidesPerView={1}
-            centeredSlides={true} 
-            coverflowEffect={{
-                rotate: 50, 
-                stretch: 0, 
-                depth: 100, 
-                modifier: 1, 
-                slideShadows: true, 
-            }}
-            pagination={{ clickable: true }}
-            autoplay={{
-                delay: 4000,
-                disableOnInteraction: false,
-            }}
-            
-        >
-            {slides.map((slide) => (
-                <SwiperSlide
-                    
-                    key={slide.id}
-                    
-                >
-                    <SliderItem slide={slide}></SliderItem>
-                </SwiperSlide>
-            ))}
-        </Swiper>
+    <Swiper
+        modules={[Pagination, Autoplay, EffectFade]}
+        effect={'fade'}
+        spaceBetween={30}
+        slidesPerView={1}
+        centeredSlides={true}
+        pagination={{ clickable: true }}
+        autoplay={{
+            delay: 4000,
+            disableOnInteraction: false,
+        }}
+    >
+        {slides.map((slide) => (
+            <SwiperSlide
+                key={slide.id}
+            >
+                <SliderItem slide={slide}></SliderItem>
+            </SwiperSlide>
+        ))}
+    </Swiper>
     );
 };
 

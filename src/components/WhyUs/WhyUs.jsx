@@ -34,10 +34,9 @@ const WhyChooseUs = () => {
             <div className="container mx-auto px-4 text-center">
                 <h2 className="text-3xl font-bold mb-8">Why choose <span className="text-[#019DBF]">IgniFund?</span></h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto gap-8 py-10 px-5">
-                    {features.map((feature, index) => (
-                        <Fade>
+                    {features.map((feature, idx) => (
+                        <Fade key={idx}>
                             <div
-                                key={index}
                                 className="border border-[#019DBF] p-6 transition-transform transform hover:scale-105 hover:shadow-xl"
                             >
                                 <div className="flex items-center space-x-4">

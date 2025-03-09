@@ -8,7 +8,6 @@ import Testimonials from '../../components/Testimonials/Testimonials';
 
 const Home = () => {
     const loadedCampaigns = useLoaderData();
-    console.log(loadedCampaigns);
     return (
         <div>
 

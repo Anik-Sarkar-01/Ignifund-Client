@@ -8,7 +8,7 @@ const AllCampaigns = () => {
     const [sortedData, setSortedData] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/allCampaignsSorted")
+        fetch("https://ignifund-server.vercel.app/allCampaignsSorted")
             .then(res => res.json())
             .then(sortedCampaigns => setSortedData(sortedCampaigns))
     }, [])

@@ -21,7 +21,7 @@ const CampaignDetails = () => {
             toast.error('Oops! Deadline is over!');
         }
         else {
-            fetch("http://localhost:5000/donations", {
+            fetch("https://ignifund-server.vercel.app/donations", {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",
@@ -30,7 +30,6 @@ const CampaignDetails = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
                     if (data.insertedId) {
                         toast.success('Donation Successful');
                     }

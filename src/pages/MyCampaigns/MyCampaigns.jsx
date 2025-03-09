@@ -10,10 +10,9 @@ const MyCampaigns = () => {
     const [campaigns, setCampaigns] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myCampaigns/${email}`)
+        fetch(`https://ignifund-server.vercel.app/myCampaigns/${email}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setCampaigns(data);
             })
     }, [email])
@@ -30,12 +29,11 @@ const MyCampaigns = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/campaign/${id}`, {
+                fetch(`https://ignifund-server.vercel.app/campaign/${id}`, {
                     method: "DELETE",
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log("Delete is done", data);
                         if (data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
