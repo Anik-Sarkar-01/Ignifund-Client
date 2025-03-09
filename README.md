@@ -1,4 +1,4 @@
-# IgniFund: A Crowd Funding Website
+# IgniFund: A Crowdfunding Website
 
 ## Purpose
 IgniFund (derived from "Ignite" and "Fund") is a crowdfunding platform that allows users to raise funds for various projects, ideas, and causes.
@@ -23,5 +23,5 @@ https://ignifund-client.web.app/
 - **Database**: MongoDB
 
 ## Deployment
-* **Client-Side:** Hosted Firebase.
+* **Client-Side:** Hosted on Firebase.
 * **Server-Side:** Hosted on Vercel.
