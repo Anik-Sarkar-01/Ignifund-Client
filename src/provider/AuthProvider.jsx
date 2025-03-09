@@ -51,6 +51,7 @@ const AuthProvider = ({ children }) => {
         googleLogIn,
         logOut,
         loading,
+        setLoading,
         updateUserProfile,
         toastSuccess,
         toastError

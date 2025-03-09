@@ -10,12 +10,13 @@ import MyCampaigns from "../pages/MyCampaigns/MyCampaigns";
 import MyDonations from "../pages/MyDonations/MyDonations";
 import PrivateRoute from "./PrivateRoute";
 import UpdateCampaign from "../pages/UpdateCampaign/UpdateCampaign";
+import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout></MainLayout>,
-        errorElement: <h2 className="text-red-300">Error !!!!</h2>,
+        errorElement: <NotFoundPage></NotFoundPage>,
         children: [
             {
                 path: "/",
@@ -71,7 +72,7 @@ const router = createBrowserRouter([
     },
     {
         path: "*",
-        element: <h2>Error Occurred!</h2>
+        element: <NotFoundPage></NotFoundPage>
     }
 ])
 

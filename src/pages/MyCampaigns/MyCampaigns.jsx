@@ -2,21 +2,27 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import LoadingPage from '../LoadingPage/LoadingPage';
 
 const MyCampaigns = () => {
     const { user } = useContext(AuthContext);
     const email = user.email;
 
     const [campaigns, setCampaigns] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         fetch(`https://ignifund-server.vercel.app/myCampaigns/${email}`)
             .then(res => res.json())
             .then(data => {
                 setCampaigns(data);
+                setIsLoading(false);
             })
     }, [email])
 
+    if(isLoading){
+        return <LoadingPage></LoadingPage>;
+    }
 
     const handleDelete = id => {
         Swal.fire({
@@ -37,7 +43,7 @@ const MyCampaigns = () => {
                         if (data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Your file has been deleted.",
+                                text: "Your Campaign has been deleted.",
                                 icon: "success"
                             });
                             const remaining = campaigns.filter(item => item._id !== id);
