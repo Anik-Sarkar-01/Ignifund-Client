@@ -5,6 +5,7 @@ import { useLoaderData } from 'react-router-dom';
 import AboutUs from '../../components/AboutUs/AboutUs';
 import WhyChooseUs from '../../components/WhyUs/WhyUs';
 import Testimonials from '../../components/Testimonials/Testimonials';
+import Volunteer from '../../components/Volunteer/Volunteer';
 
 const Home = () => {
     const loadedCampaigns = useLoaderData();
@@ -22,6 +23,9 @@ const Home = () => {
             </div>
             <div >
                 <AboutUs></AboutUs>
+            </div>
+            <div>
+                <Volunteer></Volunteer>
             </div>
             <div>
                 <Testimonials></Testimonials>
