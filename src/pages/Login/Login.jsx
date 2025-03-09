@@ -2,12 +2,11 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import { BsGoogle } from 'react-icons/bs';
-import { BiArrowFromLeft, BiLogoGoogle } from 'react-icons/bi';
 import { AiOutlineLogin } from 'react-icons/ai';
 
 const Login = () => {
     const [error, setError] = useState("");
-    const { logIn, googleLogIn, setUser } = useContext(AuthContext);
+    const { logIn, googleLogIn, setUser, toastSuccess, toastError } = useContext(AuthContext);
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -25,9 +24,11 @@ const Login = () => {
                 const user = res.user;
                 setUser(user);
                 navigate(location?.state ? location.state : "/");
+                toastSuccess("Login Successful!")
             })
             .catch((error) => {
                 setError(error.code)
+                toastError("Error Occurred.Try Again!")
             })
     }
 
@@ -38,9 +39,11 @@ const Login = () => {
                 const user = result.user;
                 setUser(user);
                 navigate(location?.state ? location.state : "/");
+                toastSuccess("Login Successful!")
             })
             .catch((error) => {
                 setError(error.code);
+                toastError("Error Occurred.Try Again!")
             })
     }
 

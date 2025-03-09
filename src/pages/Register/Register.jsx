@@ -5,7 +5,7 @@ import { AiOutlineLogin } from 'react-icons/ai';
 
 const Register = () => {
     const [error, setError] = useState("");
-    const { createUser, setUser, updateUserProfile } = useContext(AuthContext);
+    const { createUser, setUser, updateUserProfile, toastSuccess, toastError } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -21,6 +21,7 @@ const Register = () => {
 
         if (!passwordPattern.test(password)) {
             setError("Password should contain minimum one Uppercase, One Lowercase and 6 Character.")
+            toastError("Error Occurred.Try Again!")
             return;
         }
 
@@ -32,16 +33,15 @@ const Register = () => {
                 updateUserProfile({ displayName: name, photoURL: photo })
                     .then(() => {
                         navigate("/");
-                        // toast success
+                        toastSuccess("Registration Successful!")
                     })
                     .catch(() => {
-                        alert("Update unsuccessful");
-                        // toast error
+                        toastError("Error Occurred.Try Again!")
                     })
             })
             .catch((error) => {
                 setError(error.code)
-                // toast error
+                toastError("Error Occurred.Try Again!")
             })
     }
 
