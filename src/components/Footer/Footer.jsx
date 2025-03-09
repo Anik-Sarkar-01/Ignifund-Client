@@ -3,6 +3,7 @@ import { FaPhoneAlt } from 'react-icons/fa';
 import { FaLocationDot } from 'react-icons/fa6';
 import { MdEmail, MdMarkEmailRead } from 'react-icons/md';
 import logo from "../../assets/logo.png";
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -37,18 +38,18 @@ const Footer = () => {
                     </p>
                 </aside>
                 <nav className='w-full flex flex-col items-center lg:items-baseline'>
-                    <h6 className="footer-title">Services</h6>
-                    <a className="link link-hover">Branding</a>
-                    <a className="link link-hover">Design</a>
-                    <a className="link link-hover">Marketing</a>
-                    <a className="link link-hover">Advertisement</a>
+                    <h6 className="footer-title">Community</h6>
+                    <Link className="link link-hover">Blogs</Link>
+                    <Link className="link link-hover">Success Stories</Link>
+                    <Link className="link link-hover">Partner With Us</Link>
+                    <Link className="link link-hover">Volunteer Opportunities</Link>
                 </nav>
                 <nav className='w-full flex  flex-col items-center lg:items-baseline'>
-                    <h6 className="footer-title">Company</h6>
-                    <a className="link link-hover">About us</a>
-                    <a className="link link-hover">Contact</a>
-                    <a className="link link-hover">Jobs</a>
-                    <a className="link link-hover">Press kit</a>
+                    <h6 className="footer-title">About</h6>
+                    <Link className="link link-hover">About Us</Link>
+                    <Link className="link link-hover">Contact Us</Link>
+                    <Link className="link link-hover">Careers</Link>
+                    <Link className="link link-hover">Press kit</Link>
                 </nav>
             </div>
             <div className='flex flex-col justify-center items-center gap-3 bg-[#09a7ca] max-w-3xl mx-auto py-10'>
