@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../provider/AuthProvider';
 
 const AddCampaigns = () => {
